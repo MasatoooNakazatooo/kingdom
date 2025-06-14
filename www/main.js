@@ -1,7 +1,7 @@
 let currentQuestion = 0;
 let questions = [];
 
-fetch('https://kingdom-zn59.onrender.com')
+fetch('https://kingdom-zn59.onrender.com/api/questions')
   .then(res => res.json())
   .then(data => {
     questions = data;
