@@ -39,3 +39,9 @@ app.get('/api/questions', (req, res) => {
 app.listen(port, () => {
   console.log(`APIサーバーが http://localhost:${port} で起動中`);
 });
+
+const port = process.env.PORT || 3000;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`APIサーバー起動：ポート${port}`);
+});
+
