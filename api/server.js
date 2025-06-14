@@ -2,7 +2,9 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const app = express();
-const port = 3000;
+
+// ✅ Render対応：環境変数からポート番号を取得
+const port = process.env.PORT || 3000;
 
 // 静的ファイル配信設定（wwwフォルダを公開）
 app.use(express.static(path.join(__dirname, '../www')));
@@ -35,9 +37,7 @@ app.get('/api/questions', (req, res) => {
   });
 });
 
-
-const port = process.env.PORT || 3000;
+// サーバー起動
 app.listen(port, '0.0.0.0', () => {
   console.log(`APIサーバー起動：ポート${port}`);
 });
-
