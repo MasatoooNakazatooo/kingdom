@@ -2,6 +2,7 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const app = express();
+const dbPath = path.join(__dirname, 'questions.db');
 
 // ✅ Render対応：環境変数からポート番号を取得
 const port = process.env.PORT || 3000;
@@ -10,7 +11,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, '../www')));
 
 // DB接続
-const db = new sqlite3.Database('./questions.db', sqlite3.OPEN_READONLY, (err) => {
+const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
   if (err) {
     console.error('DB接続エラー:', err.message);
   } else {
